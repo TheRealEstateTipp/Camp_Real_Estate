@@ -24,9 +24,9 @@ namespace CampRealEstate.Models
         public double ZipCode { get; set; }
 
         [Display(Name = "Latitude:")]
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         [Display(Name = "Longitude:")]
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
     }
 }

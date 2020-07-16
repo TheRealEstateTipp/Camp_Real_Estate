@@ -20,7 +20,7 @@ namespace CampRealEstate.Models
         [Display(Name = "State:")]
         public string State { get; set; }
 
-        [Display(Name = "Zip Code:")]
+        [Display(Name = "ZipCode:")]
         public double ZipCode { get; set; }
 
         [Display(Name = "Latitude:")]

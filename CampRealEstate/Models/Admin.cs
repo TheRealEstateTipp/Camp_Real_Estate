@@ -25,8 +25,8 @@ namespace CampRealEstate.Models
         [Display(Name = "Telephone Number:")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Login Id")]
-        [ForeignKey("Identityuser")]
+        [Display(Name = "Login Id:")]
+        [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
 

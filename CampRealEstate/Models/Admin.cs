@@ -23,6 +23,7 @@ namespace CampRealEstate.Models
         public string Email { get; set; }
 
         [Display(Name = "Telephone Number:")]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Login Id:")]

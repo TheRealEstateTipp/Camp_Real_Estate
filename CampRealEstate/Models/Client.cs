@@ -21,6 +21,7 @@ namespace CampRealEstate.Models
         public string ClientLastName { get; set; }
 
         [Display(Name = "Telephone Number:")]
+        [DataType(DataType.PhoneNumber)]
         public string ClientPhone { get; set; }
 
         [Display(Name = "Email:")]

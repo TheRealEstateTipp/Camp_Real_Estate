@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace CampRealEstate.Models
 {
-    public class RealEstateAgent
+    public class LoanOfficer
     {
         [Key]
-        public int RealEstateAgentId { get; set; }
+        public int LoanOfficerId { get; set; }
 
         [Display(Name = "First Name:")]
         public string FirstName { get; set; }

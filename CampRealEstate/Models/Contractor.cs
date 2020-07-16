@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace CampRealEstate.Models
 {
-    public class RealEstateAgent
+    public class Contractor
     {
         [Key]
-        public int RealEstateAgentId { get; set; }
+        public int ContractorId { get; set; }
 
         [Display(Name = "First Name:")]
         public string FirstName { get; set; }
@@ -29,6 +30,9 @@ namespace CampRealEstate.Models
 
         [Display(Name = "License Number:")]
         public string LicenseNumber { get; set; }
+
+        [Display(Name = "Type of Contractor:")]
+        public SelectList ContractorType { get; set; }
 
         [Display(Name = "Date Registered In Network:")]
         [DataType(DataType.Date)]

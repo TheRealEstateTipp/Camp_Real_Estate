@@ -31,13 +31,13 @@ namespace CampRealEstate.Models
         public double ZipCode { get; set; }
 
         [Display(Name = "Branch of Service:")]
-        public SelectList MilitaryBranch { get; set; }
+        public string MilitaryBranch { get; set; }
 
         [Display(Name = "Military Status:")]
-        public SelectList MilitaryStatus { get; set; }
+        public string MilitaryStatus { get; set; }
 
         [ForeignKey("IdentityUser")]
-        public int IdentityUserId { get; set; }
+        public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
 
         [ForeignKey("Address")]

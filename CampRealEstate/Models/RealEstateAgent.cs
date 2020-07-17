@@ -21,7 +21,6 @@ namespace CampRealEstate.Models
 
         [Display(Name = "Telephone Number:")]
         [DataType(DataType.PhoneNumber)]
-        [Column(TypeName = "phonenumber")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Email:")]
@@ -35,6 +34,12 @@ namespace CampRealEstate.Models
         [Column(TypeName = "date")]
         public DateTime DateRegistered { get; set; }
 
+        [Display(Name = "Agree to Response Req:")]
+        public bool IsResponsive { get; set; }
+
+        [Display(Name = "VA Loan Knowledge:")]
+        public bool HasVALoanKnowledge { get; set; }
+
         [Display(Name = "Approved by Admin:")]
         public bool IsApproved { get; set; }
 
@@ -42,7 +47,7 @@ namespace CampRealEstate.Models
         public string ImageUrl { get; set; }
 
         [ForeignKey("IdentityUser")]
-        public int IdentityUserId { get; set; }
+        public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
 
         [ForeignKey("Company")]

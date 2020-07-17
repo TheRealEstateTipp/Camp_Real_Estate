@@ -42,12 +42,12 @@ namespace CampRealEstate.Data
                 new IdentityRole
                 {
                     Name = "RealEstateAgent",
-                    NormalizedName = "REAL ESTATE AGENT"
+                    NormalizedName = "REALESTATEAGENT"
                 },
                 new IdentityRole
                 {
                     Name = "LoanOfficer",
-                    NormalizedName = "LOAN OFFICER"
+                    NormalizedName = "LOANOFFICER"
                 },
 
                 new IdentityRole

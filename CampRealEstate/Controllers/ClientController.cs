@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using CampRealEstate.Data;
 using CampRealEstate.Models;
@@ -22,7 +23,16 @@ namespace CampRealEstate.Controllers
 
         public IActionResult Index()
         {
-            return View();
+             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+             var client = _context.Clients.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+
+             if(client == null)
+             {
+               return RedirectToAction("Create");
+             }
+
+             return View(client);
+        
         }
 
         public IActionResult Create()
@@ -42,9 +52,16 @@ namespace CampRealEstate.Controllers
                 new SelectListItem {Text = "Navy", Value = "4"},
                 new SelectListItem {Text = "Marines", Value = "5"},
             };
-            
+            return View(client);
+        }
 
-            return View();
+        [HttpPost]
+        public IActionResult Create(Client client)
+        {
+            client.IdentityUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            _context.Clients.Add(client);
+            _context.SaveChanges();
+            return RedirectToAction("Index");  
         }
     }
 

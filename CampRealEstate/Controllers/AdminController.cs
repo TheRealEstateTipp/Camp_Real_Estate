@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CampRealEstate.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CampRealEstate.Controllers
-{
+{   [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         private ApplicationDbContext _context;

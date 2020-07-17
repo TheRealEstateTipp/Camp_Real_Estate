@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CampRealEstate.Migrations
 {
-    public partial class initDB : Migration
+    public partial class initialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -224,20 +224,11 @@ namespace CampRealEstate.Migrations
                     ClientPhone = table.Column<string>(nullable: true),
                     ClientEmail = table.Column<string>(nullable: true),
                     ZipCode = table.Column<double>(nullable: false),
-                    MilitaryBranch = table.Column<string>(nullable: true),
-                    MilitaryStatus = table.Column<string>(nullable: true),
-                    IdentityUserId = table.Column<string>(nullable: true),
-                    AddressId = table.Column<int>(nullable: false)
+                    IdentityUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Clients", x => x.ClientId);
-                    table.ForeignKey(
-                        name: "FK_Clients_Addresses_AddressId",
-                        column: x => x.AddressId,
-                        principalTable: "Addresses",
-                        principalColumn: "AddressId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Clients_AspNetUsers_IdentityUserId",
                         column: x => x.IdentityUserId,
@@ -257,7 +248,6 @@ namespace CampRealEstate.Migrations
                     PhoneNumber = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     LicenseNumber = table.Column<string>(nullable: true),
-                    ContractorType = table.Column<string>(nullable: true),
                     DateRegistered = table.Column<DateTime>(type: "date", nullable: false),
                     IsResponsive = table.Column<bool>(nullable: false),
                     IsApproved = table.Column<bool>(nullable: false),
@@ -359,11 +349,11 @@ namespace CampRealEstate.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "52c4410c-d8c9-4461-a937-85d32acd24f0", "d2ce06ee-28b9-4515-81c2-69cdd50300ad", "Admin", "ADMIN" },
-                    { "570d7eb4-a3de-4f57-ae2a-d0c0db2f0557", "0a001f71-0347-4b5b-8265-a5abb202361a", "Client", "CLIENT" },
-                    { "9f664d41-e273-4db5-957b-db9056e1baf7", "a3ad3ba5-5a5a-4a6d-9d55-ec54a676ce07", "RealEstateAgent", "REALESTATEAGENT" },
-                    { "f58d1c04-5f10-455e-8d92-e15dfd6170a9", "ee8af413-0ee4-4316-a6b4-edcb724e299f", "LoanOfficer", "LOANOFFICER" },
-                    { "a8a53af2-66b5-44db-ad5b-46101c877743", "927995c3-8b46-48da-8331-9cbafb2776ac", "Contractor", "CONTRACTOR" }
+                    { "b32aa56f-6e11-4b87-a685-4fdab384183a", "d42a914e-f09b-4164-a86e-6f57a6a95e0b", "Admin", "ADMIN" },
+                    { "60dd43ed-bc99-4f67-9689-e1ac5908a266", "3c12368f-6fa9-4aaf-870a-7c00cd381347", "Client", "CLIENT" },
+                    { "9afb2936-6f2c-4a23-991c-85f356e355ce", "14acc1a2-0a1a-4923-8e0c-ce0028f2d611", "RealEstateAgent", "REALESTATEAGENT" },
+                    { "fe79df64-6b9c-4259-90fe-3a8a423d97d2", "bdc1d744-e0d0-4bc9-b8c7-32997e317984", "LoanOfficer", "LOANOFFICER" },
+                    { "3b89cefb-be41-4c36-84ab-3d04a56f91f3", "86495741-09f6-4c12-b8a3-f74b2bb5698e", "Contractor", "CONTRACTOR" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -409,11 +399,6 @@ namespace CampRealEstate.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Clients_AddressId",
-                table: "Clients",
-                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_IdentityUserId",

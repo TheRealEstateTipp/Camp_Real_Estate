@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CampRealEstate.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200717025427_initDB")]
-    partial class initDB
+    [Migration("20200717183446_initialDB")]
+    partial class initialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -87,9 +87,6 @@ namespace CampRealEstate.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AddressId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ClientEmail")
                         .HasColumnType("nvarchar(max)");
 
@@ -105,18 +102,10 @@ namespace CampRealEstate.Migrations
                     b.Property<string>("IdentityUserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("MilitaryBranch")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MilitaryStatus")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("ZipCode")
                         .HasColumnType("float");
 
                     b.HasKey("ClientId");
-
-                    b.HasIndex("AddressId");
 
                     b.HasIndex("IdentityUserId");
 
@@ -152,9 +141,6 @@ namespace CampRealEstate.Migrations
 
                     b.Property<int>("CompanyId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ContractorType")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateRegistered")
                         .HasColumnType("date");
@@ -328,36 +314,36 @@ namespace CampRealEstate.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "52c4410c-d8c9-4461-a937-85d32acd24f0",
-                            ConcurrencyStamp = "d2ce06ee-28b9-4515-81c2-69cdd50300ad",
+                            Id = "b32aa56f-6e11-4b87-a685-4fdab384183a",
+                            ConcurrencyStamp = "d42a914e-f09b-4164-a86e-6f57a6a95e0b",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "570d7eb4-a3de-4f57-ae2a-d0c0db2f0557",
-                            ConcurrencyStamp = "0a001f71-0347-4b5b-8265-a5abb202361a",
+                            Id = "60dd43ed-bc99-4f67-9689-e1ac5908a266",
+                            ConcurrencyStamp = "3c12368f-6fa9-4aaf-870a-7c00cd381347",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
-                            Id = "9f664d41-e273-4db5-957b-db9056e1baf7",
-                            ConcurrencyStamp = "a3ad3ba5-5a5a-4a6d-9d55-ec54a676ce07",
+                            Id = "9afb2936-6f2c-4a23-991c-85f356e355ce",
+                            ConcurrencyStamp = "14acc1a2-0a1a-4923-8e0c-ce0028f2d611",
                             Name = "RealEstateAgent",
                             NormalizedName = "REALESTATEAGENT"
                         },
                         new
                         {
-                            Id = "f58d1c04-5f10-455e-8d92-e15dfd6170a9",
-                            ConcurrencyStamp = "ee8af413-0ee4-4316-a6b4-edcb724e299f",
+                            Id = "fe79df64-6b9c-4259-90fe-3a8a423d97d2",
+                            ConcurrencyStamp = "bdc1d744-e0d0-4bc9-b8c7-32997e317984",
                             Name = "LoanOfficer",
                             NormalizedName = "LOANOFFICER"
                         },
                         new
                         {
-                            Id = "a8a53af2-66b5-44db-ad5b-46101c877743",
-                            ConcurrencyStamp = "927995c3-8b46-48da-8331-9cbafb2776ac",
+                            Id = "3b89cefb-be41-4c36-84ab-3d04a56f91f3",
+                            ConcurrencyStamp = "86495741-09f6-4c12-b8a3-f74b2bb5698e",
                             Name = "Contractor",
                             NormalizedName = "CONTRACTOR"
                         });
@@ -541,12 +527,6 @@ namespace CampRealEstate.Migrations
 
             modelBuilder.Entity("CampRealEstate.Models.Client", b =>
                 {
-                    b.HasOne("CampRealEstate.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
                         .WithMany()
                         .HasForeignKey("IdentityUserId");

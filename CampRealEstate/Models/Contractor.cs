@@ -30,8 +30,9 @@ namespace CampRealEstate.Models
         [Display(Name = "License Number:")]
         public string LicenseNumber { get; set; }
 
+        [NotMapped]
         [Display(Name = "Type of Contractor:")]
-        public string ContractorType { get; set; }
+        public List<SelectListItem> ContractorType { get; set; }
 
         [Display(Name = "Date Registered In Network:")]
         [DataType(DataType.Date)]

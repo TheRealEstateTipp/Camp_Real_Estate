@@ -30,18 +30,18 @@ namespace CampRealEstate.Models
         [Display(Name = "Client ZipCode:")]
         public double ZipCode { get; set; }
 
+        [NotMapped]
         [Display(Name = "Branch of Service:")]
-        public string MilitaryBranch { get; set; }
+        public List<SelectListItem> MilitaryBranch { get; set; }
 
+        [NotMapped]
         [Display(Name = "Military Status:")]
-        public string MilitaryStatus { get; set; }
+        public List<SelectListItem> MilitaryStatus { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
         public IdentityUser IdentityUser { get; set; }
 
-        [ForeignKey("Address")]
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
+
     }
 }

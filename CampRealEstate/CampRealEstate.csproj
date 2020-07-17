@@ -16,6 +16,10 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Contractor\" />
+    <Folder Include="Views\LoanOfficer\" />
+    <Folder Include="Views\RealEstateAgent\" />
   </ItemGroup>
 
 </Project>

@@ -16,8 +16,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="UploadedImages\" />
     <Folder Include="Views\Contractor\" />
-    <Folder Include="Views\LoanOfficer\" />
     <Folder Include="Views\RealEstateAgent\" />
   </ItemGroup>
 

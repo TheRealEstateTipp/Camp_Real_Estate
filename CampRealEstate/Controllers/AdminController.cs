@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using CampRealEstate.Data;
+using CampRealEstate.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace CampRealEstate.Controllers
         public IActionResult Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var admin = _context.Clients.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+            var admin = _context.Admins.Where(c => c.IdentityUserId == userId).FirstOrDefault();
 
             if (admin == null)
             {
@@ -29,6 +30,20 @@ namespace CampRealEstate.Controllers
             }
 
             return View(admin);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Admin admin)
+        {
+            admin.IdentityUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            _context.Admins.Add(admin);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -70,8 +70,38 @@ namespace CampRealEstate.Controllers
 
                 realEstateAgent.ImageUrl = _path;
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("EditScreeningQuestion1");
             }
+            return RedirectToAction("EditScreeningQuestion1");
+        }
+
+        public IActionResult EditScreeningQuestion1()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var realEstateAgent = _context.RealEstateAgents.Where(l => l.IdentityUserId == userId).SingleOrDefault();
+            return View(realEstateAgent);
+        }
+
+        [HttpPost]
+        public IActionResult EditScreeningQuestion1(RealEstateAgent realEstateAgent)
+        {
+            _context.RealEstateAgents.Update(realEstateAgent);
+            _context.SaveChanges();
+            return RedirectToAction("EditScreeningQuestion2");
+        }
+
+        public IActionResult EditScreeningQuestion2()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var realEstateAgent = _context.RealEstateAgents.Where(l => l.IdentityUserId == userId).SingleOrDefault();
+            return View(realEstateAgent);
+        }
+
+        [HttpPost]
+        public IActionResult EditScreeningQuestion2(RealEstateAgent realEstateAgent)
+        {
+            _context.RealEstateAgents.Update(realEstateAgent);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
     }

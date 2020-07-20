@@ -80,9 +80,9 @@ namespace CampRealEstate.Controllers
 
                 contractor.ImageUrl = _path;
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("EditScreeningQuestions");
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("EditScreeningQuestions");
         }
 
         public IActionResult EditScreeningQuestions()

@@ -56,8 +56,8 @@ namespace CampRealEstate.Controllers
         [HttpPost]
         public async Task<ActionResult> Upload(IFormFile file, LoanOfficer loanOfficer)
         {
-            loanOfficer.IdentityUserId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            loanOfficer = _context.LoanOfficers.Where(l => l.IdentityUserId == userId).SingleOrDefault();
 
             if (file.Length > 0)
             {
@@ -69,7 +69,6 @@ namespace CampRealEstate.Controllers
                 }
 
                 loanOfficer.ImageUrl = _path;
-                loanOfficer.ImageUrl = loanOfficer.ImageUrl;
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }

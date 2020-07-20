@@ -1,0 +1,42 @@
+﻿@model CampRealEstate.Models.Contractor
+
+@{
+    ViewData["Title"] = "EditScreeningQuestions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>To be a part of the Camp Real Estate Network, we ask that all professionals respond to prospective client inquiries within 24 business hours.</h4>
+<h4>Do you agree with this condition?</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditScreeningQuestions">
+            @Html.HiddenFor(Model => Model.ContractorId)
+            @Html.HiddenFor(Model => Model.FirstName)
+            @Html.HiddenFor(Model => Model.LastName)
+            @Html.HiddenFor(Model => Model.PhoneNumber)
+            @Html.HiddenFor(Model => Model.Email)
+            @Html.HiddenFor(Model => Model.LicenseNumber)
+            @Html.HiddenFor(Model => Model.DateRegistered)
+            @Html.HiddenFor(Model => Model.IsApproved)
+            @Html.HiddenFor(Model => Model.ImageUrl)
+            @Html.HiddenFor(Model => Model.IdentityUserId)
+            @Html.HiddenFor(Model => Model.CompanyId)
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    @Html.DropDownListFor(model => model.IsResponsive, new[] { new SelectListItem { Text = "Yes", Value = "true" }, new SelectListItem { Text = "No", Value = "false" } })
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

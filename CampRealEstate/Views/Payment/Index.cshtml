@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+}
+<div>
+    <form action="/Payment/Processing" method="POST">
+        <script src ="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="@CampRealEstate.ApiKeys.stripeTestApi"
+                data-amount="@ViewBag.PaymentAmount"
+                data-template-name="Camp Real Estate"
+                data-description="One-year Enrollment"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="en"
+                data-zip-code="true"
+                data-label="Pay $50">
+        </script>
+    </form>
+</div>

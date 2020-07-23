@@ -104,5 +104,7 @@ namespace CampRealEstate.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
     }
 }

@@ -29,7 +29,7 @@ namespace CampRealEstate.Controllers
                 return RedirectToAction("Create");
             }
 
-            return View(admin);
+            return RedirectToAction("GetProfessionals");
         }
 
         public IActionResult Create()
@@ -44,6 +44,18 @@ namespace CampRealEstate.Controllers
             _context.Admins.Add(admin);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult GetProfessionals()
+        {
+            var proList = new ProfessionalViewModel()
+            {
+                Contractors = _context.Contractors.ToList(),
+                LoanOfficers = _context.LoanOfficers.ToList(),
+                RealEstateAgents = _context.RealEstateAgents.ToList()
+            };
+
+            return View(proList);
         }
     }
 }

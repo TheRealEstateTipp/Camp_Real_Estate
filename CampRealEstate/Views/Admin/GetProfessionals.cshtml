@@ -1,0 +1,149 @@
+﻿@model CampRealEstate.Models.ProfessionalViewModel
+
+@{
+    ViewData["Title"] = "GetProfessionals";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Professional Roster</h1>
+
+<h4>Contractors</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contractors.FirstOrDefault().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contractors.FirstOrDefault().LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contractors.FirstOrDefault().IsResponsive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contractors.FirstOrDefault().IsApproved)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Contractors)
+        {
+            <tr>
+                <td>
+                    @Model.Contractors.FirstOrDefault().FirstName
+                </td>
+                <td>
+                    @Model.Contractors.FirstOrDefault().LastName
+                </td>
+                <td>
+                    @Model.Contractors.FirstOrDefault().IsResponsive
+                </td>
+                <td>
+                    @Model.Contractors.FirstOrDefault().IsApproved
+                </td>
+                <td>
+                    <a asp-action="ApproveContractor" asp-route-id="@item.ContractorId">Approve</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Real Estate Agents</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RealEstateAgents.FirstOrDefault().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealEstateAgents.FirstOrDefault().LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealEstateAgents.FirstOrDefault().IsResponsive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealEstateAgents.FirstOrDefault().HasVALoanKnowledge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RealEstateAgents.FirstOrDefault().IsApproved)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RealEstateAgents)
+        {
+        <tr>
+            <td>
+                @Model.RealEstateAgents.FirstOrDefault().FirstName
+            </td>
+            <td>
+                @Model.RealEstateAgents.FirstOrDefault().LastName
+            </td>
+            <td>
+                @Model.RealEstateAgents.FirstOrDefault().IsResponsive
+            </td>
+            <td>
+                @Model.RealEstateAgents.FirstOrDefault().HasVALoanKnowledge
+            </td>
+            <td>
+                @Model.RealEstateAgents.FirstOrDefault().IsApproved
+            </td>
+            <td>
+                <a asp-action="ApproveRealEstateAgent" asp-route-id="@item.RealEstateAgentId">Approve</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Loan Officers</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanOfficers.FirstOrDefault().FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanOfficers.FirstOrDefault().LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanOfficers.FirstOrDefault().IsResponsive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanOfficers.FirstOrDefault().HasVALoanKnowledge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanOfficers.FirstOrDefault().IsApproved)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LoanOfficers)
+        {
+        <tr>
+            <td>
+                @Model.LoanOfficers.FirstOrDefault().FirstName
+            </td>
+            <td>
+                @Model.LoanOfficers.FirstOrDefault().LastName
+            </td>
+            <td>
+                @Model.LoanOfficers.FirstOrDefault().IsResponsive
+            </td>
+            <td>
+                @Model.LoanOfficers.FirstOrDefault().HasVALoanKnowledge
+            </td>
+            <td>
+                @Model.LoanOfficers.FirstOrDefault().IsApproved
+            </td>
+            <td>
+                <a asp-action="ApproveLoanOfficer" asp-route-id="@item.LoanOfficerId">Approve</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

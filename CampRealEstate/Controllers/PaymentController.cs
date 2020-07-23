@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Stripe;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using CampRealEstate.Data;
 
 namespace CampRealEstate.Controllers
 {
@@ -35,7 +36,7 @@ namespace CampRealEstate.Controllers
             };
             var service = new ChargeService();
             Charge charge = service.Create(options);
-            return View();
+            return View(charge);
         }
 
 

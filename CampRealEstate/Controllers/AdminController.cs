@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using CampRealEstate.Data;
 using CampRealEstate.Models;
@@ -56,6 +57,36 @@ namespace CampRealEstate.Controllers
             };
 
             return View(proList);
+        }
+
+        public async Task<IActionResult> ApproveContractor(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var contractor = await _context.Contractors.FindAsync(id);
+            if (contractor == null)
+            {
+                return NotFound();
+            }
+            return View(contractor);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApproveContractor(int? id, Contractor contractor)
+        {
+            if (id != contractor.ContractorId)
+            {
+                return NotFound();
+            }
+
+            _context.Update(contractor);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }
